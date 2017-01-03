@@ -1,0 +1,9 @@
+<h1>Tweets Index!!</h1>
+
+<ul>
+  <% @tweets.each do |tweet| %>
+    <li><%= link_to tweet.content, tweet %> was posted by <%= tweet.user.username %></li>
+  <% end %>
+
+  <%= link_to "All Tweets", tweets_path %>
+</ul>

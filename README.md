@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# As a visitor to the site, I should be able to see a list of all of the tweets so that I can get a sense of what people are posting about...
 
-Things you may want to cover:
+# As a visitor, I should be able to see a detail view of one particular tweet so that I can get more information about it
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# As a visitor, I should be able to create a new tweet by entering some content and a user id number
