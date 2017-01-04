@@ -21,6 +21,19 @@ class TweetsController < ApplicationController
     end
   end
 
+  def edit
+    @tweet = Tweet.find(params[:id])
+  end
+
+  def update
+    @tweet = Tweet.find(params[:id])
+    if @tweet.update
+      redirect_to tweet_path(@tweet)
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def tweet_params

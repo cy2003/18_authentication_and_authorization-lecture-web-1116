@@ -1,0 +1,9 @@
+<%= form_for(@tweet) do |f| %>
+  <!-- <label for="tweet_content">Content</label> -->
+  <%= f.label :content %>
+
+  <%= f.text_field :content, required: true %>
+  <%= f.label :user_id %>
+  <%= f.text_field :user_id, required: true %>
+  <%= f.submit %>
+<% end %>

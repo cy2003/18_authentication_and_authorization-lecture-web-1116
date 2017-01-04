@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :tweets, only: [:index, :show, :new, :create]
+  resources :tweets, except: [:destroy]
 end
