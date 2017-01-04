@@ -1,9 +1,7 @@
 # README
 
-# As a visitor to the site, I should be able to see a list of all of the tweets so that I can get a sense of what people are posting about...
+# Signing Up
 
-# As a visitor, I should be able to see a detail view of one particular tweet so that I can get more information about it
-
-# As a visitor, I should be able to create a new tweet by entering some content and a user id number
-  + As a visitor, visiting '/tweets/new' renders a form to create a new tweet
-  + As a visitor, submitting the form creates a new tweet and redirects to show page for that tweet
++ Visiting /users/new displays a form to create a new user.
++ Same as creating a new tweet.
++ Password confirmation - will make sure that they match before creating the user. 
