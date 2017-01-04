@@ -28,13 +28,17 @@ class TweetsController < ApplicationController
   def edit
     # authenticate_user
     @tweet = Tweet.find(params[:id])
-    authenticate_user_tweet and return
+    unless @tweet.user == current_user
+      redirect_to tweets_path and return
+    end
   end
 
   def update
     # authenticate_user
     @tweet = Tweet.find(params[:id])
-    authenticate_user_tweet and return
+    unless @tweet.user == current_user
+      redirect_to tweets_path and return
+    end
     if @tweet.update(tweet_params)
       redirect_to tweet_path(@tweet)
     else
@@ -43,13 +47,6 @@ class TweetsController < ApplicationController
   end
 
   private
-
-  def authenticate_user_tweet
-    unless @tweet.user == current_user
-      flash[:notice] = 'You cannot edit this tweet'
-      redirect_to @tweet
-    end
-  end
 
   def tweet_params
     params.require(:tweet).permit(:user_id, :content)
