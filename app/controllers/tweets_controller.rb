@@ -1,4 +1,5 @@
 class TweetsController < ApplicationController
+  before_action :authenticate_user, only: [:new, :create, :edit, :update]
 
   def index
     @tweets = Tweet.all
@@ -9,11 +10,14 @@ class TweetsController < ApplicationController
   end
 
   def new
+    # authenticate_user
     @tweet = Tweet.new
   end
 
   def create
+    # authenticate_user
     @tweet = Tweet.new(tweet_params)
+    @tweet.user = current_user
     if @tweet.save
       redirect_to tweet_path(@tweet)
     else
@@ -22,12 +26,16 @@ class TweetsController < ApplicationController
   end
 
   def edit
+    # authenticate_user
     @tweet = Tweet.find(params[:id])
+    authenticate_user_tweet and return
   end
 
   def update
+    # authenticate_user
     @tweet = Tweet.find(params[:id])
-    if @tweet.update
+    authenticate_user_tweet and return
+    if @tweet.update(tweet_params)
       redirect_to tweet_path(@tweet)
     else
       render 'edit'
@@ -35,6 +43,13 @@ class TweetsController < ApplicationController
   end
 
   private
+
+  def authenticate_user_tweet
+    unless @tweet.user == current_user
+      flash[:notice] = 'You cannot edit this tweet'
+      redirect_to @tweet
+    end
+  end
 
   def tweet_params
     params.require(:tweet).permit(:user_id, :content)
